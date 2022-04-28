@@ -1,0 +1,551 @@
+---
+title: "[Using Git/GitHub in RStudio ❤︎]{style='font-size: smaller'}"
+subtitle: "[**A Beginner's Guide to Version Control**]{style='font-size: 40px; font-weight: bold'}"
+author: "[𝒮hilaan 𝒜lzahaw︎i ∈ 𝒮tanford 𝒞enter for 𝒪pen and ℛeproducible 𝒮cience]{style='font-size 30px; font-weight: bold; color: #8f8f8f'}"
+format: 
+  revealjs:
+    code-fold: false
+    code-summary: "Show code"
+    code-line-numbers: false
+    incremental: true
+    smaller: true
+    scrollable: true
+    theme: custom
+    code-copy: true
+    slide-number: true
+    preview-links: true
+    self-contained: false
+    controls: true
+    overview: true
+    mouse-wheel: false
+editor: visual
+execute: 
+  freeze: true
+---
+
+```{r}
+#| label: load-packages
+#| include: false
+
+library(tidyverse)
+library(icons)
+```
+
+## Today's Plan
+
+![](https://bookdown.org/amy_yarnell/T32-book/images/session3/github-Rstudio.jpg "GitHub + RStudio"){.absolute top="0" right="0" width="600" height="400" fig-alt="An image combining the logo of GitHub on the left and the logo of RStudo on the right, with a large blue plus sign in the middle. In terms of the GitHub logo, 'GitHub' is written in bold black font, accompanied by an image of a creature that appears to be the combination of an octopus and a cat. In terms of the RStudio logo, 'R' is written in blue font against a white background and placed in a circle. This circle is placed in a hexagon, in which 'Studio' is written in white font against a blue background and placed to the right of the 'R' circle."}
+
+-   Version Control: What?
+-   Version Control: Why? Why not?
+-   Version Control: How?
+    -   RStudio integration
+    - **No need for the command line!**
+
+<br></br>
+
+. . .
+
+### Resources
+
+-   Happy Git and GitHub for the useR by [Jennifer Bryan](https://twitter.com/jennybryan "Jenny Bryan Twitter")
+    -   [**happygitwithr.com**](https://happygitwithr.com "Happy Git with R")
+-   How to Use Git/GitHub with R, [R for the Rest of Us](https://rfortherestofus.com "R for the Rest of Us")
+    -   [**rfortherestofus.com/2021/02/how-to-use-git-github-with-r/**](https://rfortherestofus.com/2021/02/how-to-use-git-github-with-r/ "R for the Rest of Us on R+GitHub")
+
+## Version Control: What?
+
+-   Record the changes made over time to a file or a set of files in a folder
+    -   Your set of files can include, e.g., data, code, figures, tables, and reports
+    -   The folder that contains your files is called a **repository**
+-   Allows tracking project history, reviewing changes, and reverting to earlier versions
+-   Different version control systems exist
+    -   [**Git**](https://en.wikipedia.org/wiki/Git "Git Wikipedia")
+    -   [**Mercurial**](https://en.wikipedia.org/wiki/Mercurial "Mercurial Wikipedia")
+    -   [**SVN**](https://subversion.apache.org/ "SVN Apache website")
+
+![](https://the-turing-way.netlify.app/_images/project-history.jpg "The Turing Way project illustration by Scriberia http://doi.org/10.5281/zenodo.3332807"){.absolute top="240" right="10" width="550" height="400" fig-alt="The Turing Way project illustration by Scriberia. On the left, we see a stack of documents named 'draft doc', 'final doc', 'doc_07', 'final_final', and a hand is pulling out a document named 'final_final_FINAL'. This appears to represent a manual approach to version control. On the right, we instead see an automated approach to version control. A hand is dialing a large blue button that ranges from V1 to V6. The dial is currently pointed towards V3, and in the background we see the third document light up."}
+
+::: aside
+The Turing Way project illustration by Scriberia. Used under a CC-BY 4.0 license. [**DOI: 10.5281/zenodo.3332807**](https://the-turing-way.netlify.app/reproducible-research/vcs.html#rr-vcs)
+:::
+
+## Version Control: What?
+
+#### [Git + GitHub for R users](https://happygitwithr.com/index.html "Happy Git and GitHub for the useR")
+
+-   I focus on Git combined with [**GitHub**](https://en.wikipedia.org/wiki/GitHub "GitHub Wikipedia"), an online interface for using Git
+-   Git + GitHub is one of the most popular and user-friendly version control systems
+-   We can use Git/GitHub from within [**RStudio**](https://en.wikipedia.org/wiki/RStudio "RStudio Wikipedia")
+    -   No command line experience necessary! 🙏
+
+![](images/here_blank.png "Artwork by @allison_horst"){.absolute right="200" width="550" height="300" fig-alt="A cartoon showing two paths side-by-side. On the left is a scary spooky forest, with spiderwebs and gnarled trees, with a scared looking cute fuzzy monster running out of it. On the right is a bright, colorful path with flowers, rainbow and sunshine. A monster facing away from us in a backpack and walking stick is looking toward the right path. Although the illustration was initially created to signify the difference between manually setting working directories in R versus using a project-based approach combined with the here R package, to me, the left side represents using Git through the terminal while the right side represents using Git in RStudio.  Artwork by @allison_horst."}
+
+::: aside
+Artwork by [**\@allison_horst**](https://www.allisonhorst.com/ "Allison Horst")
+:::
+
+## Version Control: What?
+
+<br></br>
+
+<center>
+
+<iframe class="speakerdeck-iframe" frameborder="0" src="https://speakerdeck.com/player/c590073c749c42adaf9d0f664f0a0075?slide=19" title="Git for Humans" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" style="border: 0px; background-color: rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; -webkit-background-clip: padding-box; -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 560px; height: 314px;" data-ratio="1.78343949044586">
+
+</iframe>
+
+</center>
+
+::: aside
+Git for Humans Slides created by [**Alice Bartlett**](https://alicebartlett.co.uk "Alice Bartlett Website")
+:::
+
+## Version Control: What?
+
+<br></br>
+
+<center>
+
+<iframe class="speakerdeck-iframe" frameborder="0" src="https://speakerdeck.com/player/c590073c749c42adaf9d0f664f0a0075?slide=67" title="Git for Humans" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true" style="border: 0px; background-color: rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; -webkit-background-clip: padding-box; -webkit-box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 560px; height: 314px;" data-ratio="1.78343949044586">
+
+</iframe>
+
+</center>
+
+::: aside
+Git for Humans Slides created by [**Alice Bartlett**](https://alicebartlett.co.uk "Alice Bartlett Website")
+:::
+
+## Version Control: Why?
+
+-   Back up your work to a remote location
+-   Improve reproducibility and transparency (benefit others **and** your future self)
+-   Catch and fix mistakes
+-   Time travel!
+
+![](images/timecontrol_blank.png "Artwork by @allison_horst"){.absolute right="200" top="210" width="550" height="400" fig-alt="A cartoon Delorean, with several fuzzy monsters dressed in lab coats pouring date-times into the flux capacitor, with one holding a lubridate cheatsheet. One fuzzy monster is flying on a hoverboard, dressed like Marty McFly from Back to the Future. I include this image because Marty McFly and GitHub users have at least one thing in common: They can travel through time. Artwork by @allison_horst."}
+
+::: aside
+Artwork by [**\@allison_horst**](https://www.allisonhorst.com/ "Allison Horst")
+:::
+
+## Version Control: Why not?
+
+What are some challenges associated with Git/GitHub? Why would you *not* use version control?
+
+-   Steep learning curve (but: pays off in the long-run!)
+-   Collaboration
+    -   Do your collaborators (know how to) use GitHub?
+-   Not always well suited for large data
+    -   GitHub blocks pushes that exceed 100 MB
+    -   To track files beyond this limit, use [**Git Large File Storage**](https://git-lfs.github.com "Git Large File Storage")
+-   What else...?
+
+<center>
+
+<iframe src="https://giphy.com/embed/l2YWFxG9GxXk8A7w4" width="360" height="270" frameBorder="0" class="giphy-embed" allowFullScreen>
+
+</iframe>
+
+</center>
+
+## Version Control: How?
+
+![](https://bookdown.org/amy_yarnell/T32-book/images/session3/github-Rstudio.jpg "GitHub + RStudio"){fig-alt="An image combining the logo of GitHub on the left and the logo of RStudo on the right, with a large blue plus sign in the middle. In terms of the GitHub logo, 'GitHub' is written in bold black font, accompanied by an image of a creature that appears to be the combination of an octopus and a cat. In terms of the RStudio logo, 'R' is written in blue font against a white background and placed in a circle. This circle is placed in a hexagon, in which 'Studio' is written in white font against a blue background and placed to the right of the 'R' circle."}
+
+## Version Control: How?
+
+![](https://imgs.xkcd.com/comics/documents.png "xkcd comic: Documents"){.absolute top="50" right="0" width="250" height="500" fig-alt="Image of a web comic that shows one person sitting at a desk scrolling through their documents folder. The folder looks disorganized, and its files have uninformative names, like 'Untitled 241.doc' and 'Untitled 40 MOM ADDRESS.jpg'. Another person is standing behind the seated person, and says 'OH MY GOD.' The comic has a caption, reading 'PROTIP: NEVER LOOK IN SOMEONE ELSE'S DOCUMENTS FOLDER.'"}
+
+. . .
+
+[**GitHub in R: Set-up**](https://happygitwithr.com/install-intro.html "Happy Git Installation")
+
+-   Install or upgrade R, RStudio, and Git
+-   Connect RStudio and GitHub
+
+<br></br>
+
+. . .
+
+[**GitHub in R: Workflow**](https://happygitwithr.com/usage-intro.html "Happy Git Workflows")
+
+-   Create a GitHub repository
+-   Clone a GitHub remote to your local computer using RStudio
+-   Stage and commit changes to your local repository
+-   Push your local changes to the GitHub remote
+
+::: aside
+xkcd comic. Used under a CC BY-NC 2.5 license. [**https://xkcd.com/1459/**](https://xkcd.com/1459/ "xkcd comic: Documents")
+:::
+
+## Version Control: Set-up
+
+#### [Install or upgrade R, RStudio, and Git](https://happygitwithr.com/install-intro.html "Happy Git Installation")
+
+-   Register a GitHub account at [**github.com**](https://github.com "GitHub")
+-   Install or upgrade [**R**](https://cloud.r-project.org/ "R") and [**RStudio**](https://www.rstudio.com/products/rstudio/download/preview/ "RStudio")
+
+. . .
+
+```{r, echo = TRUE, results='hide'}
+R.version.string # Older than 4.0.0? Update!
+```
+
+-   Install or upgrade Git, following [**Chapter 6 of Happy Git and GitHub for the useR**](https://happygitwithr.com/install-git.html "Happy Git Chapter 6")
+  -   Check Git file path and version from **RStudio > Terminal**
+    
+. . .
+
+```{r, eval=FALSE, echo=TRUE}
+which git
+git --version
+```
+    
+    
+  -   No file path/version? Install [**Git**](https://happygitwithr.com/install-git.html "Happy Git Chapter 6")
+-   Configure Git (i.e., introduce yourself!👋) from within R
+
+. . .
+
+```{r, eval=FALSE, echo=TRUE}
+# Step 1: Install the usethis package
+install.packages("usethis") 
+# Step 2: Load the usethis package
+library(usethis) 
+# Step 3: Set your Git user name and email (must be the email associated with your GitHub account!)
+  ## Option 1, code only: use_git_config()
+use_git_config(user.name = "My Preferred Name", user.email = "same_as_my_github@email.com")
+  ## Option 2, point and click: edit_git_config()
+edit_git_config() #opens gitconfig file; now, add name and email
+```
+
+## Version Control: Set-up
+
+#### [Connect RStudio and GitHub](https://happygitwithr.com/https-pat.html "Happy Git Chapter 9")
+
+-   Create a personal access token (PAT) on GitHub
+
+. . .
+
+```{r, eval=FALSE, echo=TRUE}
+usethis::create_github_token() #Opens a browser window to create PAT
+```
+
+-   Click **Generate Token**, and copy your PAT (you won't be able to see it again!)
+-   Store your PAT to connect RStudio and GitHub
+
+. . .
+
+```{r, eval=FALSE, echo=TRUE}
+# Step 1: install the gitcreds package
+install.packages("gitcreds")
+# Step 2: load the gitcreds package
+library(gitcreds)
+# Step 3: set your git credentials
+gitcreds_set() # paste your PAT when prompted
+# Step 4: check that everything is set up correctly
+gitcreds_get()
+```
+
+## Version Control: Workflow
+
+::: panel-tabset
+## Step-by-step guide
+
+-   Create a (remote) GitHub repository
+-   **Clone** the repository to your computer via RStudio
+-   Make local changes
+    -   Run analyses, create tables and figures, write a report...
+-   **Commit** your local changes (i.e., take a snapshot)
+    -   First, you **stage** files, telling Git which changes should be included in the next commit
+    -   Second, you commit the staged files, including a **commit message**
+-   **Push** your local changes to the GitHub remote
+
+## What's a **commit** and when should I do it?
+
+**Every time you finish a valuable chunk of work**
+
+> "The fundamental unit of work in Git is a commit. A commit takes [a snapshot of your code]{style="text-decoration: underline;"} at a specified point in time. Using a Git commit is like using anchors and other protection when climbing. If you're crossing a dangerous rock face, you want to make sure you've used protection to catch you if you fall. Commits play a similar role: if you make a mistake, [you can't fall past the previous commit]{style="text-decoration: underline;"}.\
+\
+> Like rock climbing protection, you want to be judicious in your use of commits. Committing too frequently will slow your progress; use more commits when you're in uncertain or dangerous territory. Commits are also helpful to others, because they show your journey, not just the destination." (Hadley Wickham & Jenny Bryan in *R Packages Ch. 18: Git and GitHub*)
+:::
+
+## Version Control: Workflow
+
+#### [Create a GitHub repository and clone it to your computer via RStudio](https://happygitwithr.com/new-github-first.html "Happy Git Chapter 15")
+
+-   Log in to [**github.com**](http://github.com "GitHub")
+
+-   Create a new repository (click the large green [New](https://github.com/new "Create New GitHub repository"){style="color: darkgreen; font-weight: bold;"} button)
+    <details>
+    <summary>
+    Show screenshot
+    </summary>
+    ![](images/new.png "New Repository") ![](images/create.png)
+    </details>
+
+-   Open your new repository and click the large green [Code]{style="color: darkgreen; font-weight: bold;"} button
+
+-   Copy the **Clone HTTPS URL** to your clipboard
+    <details>
+    <summary>
+    Show screenshot
+    </summary>
+    ![](images/code.png)
+    </details>
+
+-   Start a new Project in RStudio
+    -   **File > New Project > Version Control > Git**
+        <details>
+        <summary>
+        Show screenshot
+        </summary>
+        ![](images/project.png)\
+        ![](images/git.png)
+        </details>
+
+    -   Copy the URL of your new GitHub repo in **Repository URL**
+        <details>
+        <summary>
+        Show screenshot
+        </summary>
+        ![](images/clone.png)
+        </details>
+
+    -   Create project!
+
+## Version Control: Workflow
+
+#### [Commit local changes and push them to GitHub remote](https://happygitwithr.com/new-github-first.html "Happy Git Chapter 15")
+
+-   Open your RStudio project and make local changes
+
+-   Find the **Git** tab in the upper right pane
+    <details>
+    <summary>
+    Show screenshot
+    </summary>
+    ![](images/pane.png)
+    </details>
+
+-   Check the **Staged** box for the files you want to commit
+    -   Click on **Diff** to see what's changed in the file since your last commit
+        <details>
+        <summary>
+        Show screenshot
+        </summary>
+        ![](images/staged.png)
+        </details>
+
+-   Click **Commit**, type an informative **Commit message** and commit!
+    <details>
+    <summary>
+    Show screenshot
+    </summary>
+    ![](images/commit.png)
+    </details>
+
+-   Simply click ⬆️ **Push** to push your local changes to your GitHub remote
+    <details>
+    <summary>
+    Show screenshot
+    </summary>
+    ![](images/push1.png) ![](images/push2.png)
+    </details>
+
+-   Confirm that the local changes are now in your GitHub remote
+    <details>
+    <summary>
+    Show screenshot
+    </summary>
+    ![](images/confirm.png)
+    </details>
+
+## Version Control: Workflow
+
+#### Make remote changes and pull them to your local repository
+
+-   Navigate to your GitHub remote and make changes (e.g., update **README.md**)
+    <details>
+    <summary>
+    Show screenshot
+    </summary>
+    ![](images/remote.png)
+    </details>
+
+-   Commit your changes to the GitHub remote
+    <details>
+    <summary>
+    Show screenshot
+    </summary>
+    ![](images/commit2.png)
+    </details>
+
+-   In your RStudio local project, click the blue ⬇️ **Pull** button
+    <details>
+    <summary>
+    Show screenshot
+    </summary>
+    ![](images/pull.png)\
+    ![](images/pull2.png)
+    </details>
+
+-   Confirm that your remote changes are now in your local repository
+    <details>
+    <summary>
+    Show screenshot
+    </summary>
+    ![](images/confirm2.png)
+    </details>
+
+## Best practices
+
+![](https://cbea.ms/content/images/size/w2000/2021/01/git_commit_2x.png "Git commit messages"){.absolute width="400" top="400" right="300" fig-alt="An image that looks like a screenshot of someone's Git commits, showing a progression of Git commit messages over time. The earliest commit messages are informative, like 'created main loop & timing control'. The latest commit message is simply 'haaaaaaands'. The caption states: 'As a project drags on, my git commit messages get less and less informative.'"}
+
+. . .
+
+-   Each commit should be **minimal** (changes related to a single problem)
+-   Each commit should be **complete**
+-   Each commit message should be **concise, yet informative** (describe the **why**)
+-   Don't push it to your GitHub remote before it 'works'
+
+. . .
+
+Keep in mind:
+
+-   **Your future self is your most important collaborator!**
+-   But... Some version control is better than no version control! It's okay to not be perfect. 🧘🏽
+
+## Finally: Time travel 🔄
+
+-   **Revert an entire file** to its previous commit
+    -   Right click on the file in the **Git** pane and select ↩️**Revert ...**
+        <details>
+        <summary>
+        Show screenshot
+        </summary>
+        ![](images/revert.png)
+        </details>
+-   **Revert part of a file** to its previous commit
+    -   Open the **Diff** window (New text = [light green]{style="color: #7feb7f;"}, removed text = [light red]{style="color: #FF7F7F;"})
+
+    -   Click **Discard chunk** to undo a block of changes
+        <details>
+        <summary>
+        Show screenshot
+        </summary>
+        ![](images/discard-chunk.png)
+        </details>
+
+    -   Click **Discard line** to undo changes to individual lines
+        <details>
+        <summary>
+        Show screenshot
+        </summary>
+        ![](images/discard-line1.png) ![](images/discard-line2.png)
+        </details>
+
+## Other tips and tricks
+
+. . .
+
+**Ignoring files**
+
+-   Are there files you don't want to push to the GitHub remote (e.g., because they're too large)?
+-   Add these files to your **.gitignore** file
+    -   Option 1: In the **Git** pane, right click on the file, and click 🚫 **Ignore...**
+        <details>
+        <summary>
+        Show screenshot
+        </summary>
+        ![](images/ignore.png)
+        </details>
+
+    -   Option 2: In the **Files** pane, open your **.gitignore** and add the filename to the list
+        <details>
+        <summary>
+        Show screenshot
+        </summary>
+        ![](images/ignore2.png)\
+        ![](images/ignore3.png)
+        </details>
+
+. . .
+
+<br></br>
+
+#### Things I didn't cover today...
+
+- Experiment using **branches**
+  - Maintain (risky) work in progress /  different versions of your project
+  - Satisfied? Get changes from one branch into another by **merging** with the main branch
+- **Collaborating** with others using GitHub
+  - And **merge conflicts**... 👻
+
+## Thanks!
+
+<br></br>
+
+**Questions and/or feedback**? Reach out to me!
+
+:::: {.columns}
+
+::: {.column width="10%"}
+`r icon_style(icons::fontawesome("twitter"), scale = 2, fill = "#035AA6")`
+:::
+
+::: {.column width="90%"}
+[**twitter.com/shilaan01**](https://twitter.com/shilaan01 "Check out my Twitter")  
+:::
+
+::::
+
+
+:::: {.columns}
+
+::: {.column width="10%"}
+`r icon_style(icons::fontawesome("globe"), scale = 2, fill = "#035AA6")`
+:::
+
+::: {.column width="90%"}
+[**shilaan.rbind.io**](https://shilaan.rbind.io "Check out my website")
+:::
+
+::::
+
+
+:::: {.columns}
+
+::: {.column width="10%"}
+`r icon_style(icons::fontawesome("github"), scale = 2, fill = "#035AA6")` 
+:::
+
+::: {.column width="90%"}
+[**github.com/shilaan**](https://github.com/shilaan "Check out my GitHub")  
+:::
+
+::::
+
+
+:::: {.columns}
+
+::: {.column width="10%"}
+`r icon_style(icons::fontawesome("paper-plane"), scale = 2, fill = "#035AA6")`
+:::
+
+::: {.column width="90%"}
+[**shilaan@stanford.edu**](mailto:shilaan@stanford.edu "Email me") 
+:::
+
+::::
+
+![](https://github.com/allisonhorst/stats-illustrations/blob/master/rstats-artwork/r_first_then.png?raw=true "Artwork by Allison Horst"){.absolute top="0" right="0" width="550" height="700" fig-alt="A digital cartoon with two illustrations: the top shows the R-logo with a scary face, and a small scared little fuzzy monster holding up a white flag in surrender while under a dark stormcloud. The text above says 'at first I was like…' The lower cartoon is a friendly, smiling R-logo jumping up to give a happy fuzzy monster a high-five under a smiling sun and next to colorful flowers. The text above the bottom illustration reads 'but now it’s like…' Artwork by Allison Horst"}
+
+::: aside
+Artwork by [**\@allison_horst**](https://www.allisonhorst.com/ "Allison Horst")
+:::
+
+
+
+
