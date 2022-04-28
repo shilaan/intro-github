@@ -33,7 +33,7 @@ library(icons)
 
 ## Today's Plan
 
-![](https://bookdown.org/amy_yarnell/T32-book/images/session3/github-Rstudio.jpg "GitHub + RStudio"){.absolute top="0" right="0" width="600" height="400" fig-alt="An image combining the logo of GitHub on the left and the logo of RStudo on the right, with a large blue plus sign in the middle. In terms of the GitHub logo, 'GitHub' is written in bold black font, accompanied by an image of a creature that appears to be the combination of an octopus and a cat. In terms of the RStudio logo, 'R' is written in blue font against a white background and placed in a circle. This circle is placed in a hexagon, in which 'Studio' is written in white font against a blue background and placed to the right of the 'R' circle."}
+![](https://bookdown.org/amy_yarnell/T32-book/images/session3/github-Rstudio.jpg "GitHub + RStudio"){.absolute top="0" right="0" width="650" height="400" fig-alt="An image combining the logo of GitHub on the left and the logo of RStudo on the right, with a large blue plus sign in the middle. In terms of the GitHub logo, 'GitHub' is written in bold black font, accompanied by an image of a creature that appears to be the combination of an octopus and a cat. In terms of the RStudio logo, 'R' is written in blue font against a white background and placed in a circle. This circle is placed in a hexagon, in which 'Studio' is written in white font against a blue background and placed to the right of the 'R' circle."}
 
 -   Version Control: What?
 -   Version Control: Why? Why not?
@@ -47,6 +47,7 @@ library(icons)
 
 ### Resources
 
+-   Slides at [**shilaan.github.io/intro-github**](https://shilaan.github.io/intro-github/ "R + GitHub Slidedeck") 
 -   Happy Git and GitHub for the useR by [Jennifer Bryan](https://twitter.com/jennybryan "Jenny Bryan Twitter")
     -   [**happygitwithr.com**](https://happygitwithr.com "Happy Git with R")
 -   How to Use Git/GitHub with R, [R for the Rest of Us](https://rfortherestofus.com "R for the Rest of Us")
@@ -487,7 +488,7 @@ Keep in mind:
 
 <br></br>
 
-**Questions and/or feedback**? Reach out to me!
+**Questions and/or feedback?** Reach out to me!
 
 :::: {.columns}
 
@@ -545,7 +546,3 @@ Keep in mind:
 ::: aside
 Artwork by [**\@allison_horst**](https://www.allisonhorst.com/ "Allison Horst")
 :::
-
-
-
-
