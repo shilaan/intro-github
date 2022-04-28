@@ -429,7 +429,7 @@ Keep in mind:
         ![](images/revert.png)
         </details>
 -   **Revert part of a file** to its previous commit
-    -   Open the **Diff** window (New text = [light green]{style="color: #7feb7f;"}, removed text = [light red]{style="color: #FF7F7F;"})
+    -   Open the **Diff** window (New text = [light green]{style="color: #7feb7f; font-weight: bold;"}, removed text = [light red]{style="color: #FF7F7F; font-weight: bold;"})
 
     -   Click **Discard chunk** to undo a block of changes
         <details>
