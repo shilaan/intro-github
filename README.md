@@ -1,4 +1,4 @@
-# Using Git/GitHub in RStudio ❤
+# Using Git/GitHub in RStudio
 **A Beginner's Guide to Version Control**
 
 This repository contains the slides for an introductory workshop on version control. The focus is on using Git/GitHub in RStudio, without needing the command line.  
